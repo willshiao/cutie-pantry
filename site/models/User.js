@@ -1,6 +1,6 @@
 'use strict';
 
-const mongoose = require('mongoose');
+const mongoose = require('../lib/db');
 const bcrypt = require('bcrypt');
 
 const Schema = mongoose.Schema;
