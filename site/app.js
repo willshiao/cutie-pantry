@@ -11,7 +11,6 @@ require('./lib/extend').extendResponse(express.response);
 const app = express();
 
 const indexRoute = require('./routes/index');
-const pagesRoute = require('./routes/pages');
 
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
@@ -23,7 +22,6 @@ app.use(session({
   cookie: { }
 }));
 app.use('/', indexRoute);
-app.use('/page', pagesRoute);
 
 app.use(express.static('static'));
 
