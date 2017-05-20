@@ -15,6 +15,10 @@ router.get('/register', (req, res) => {
   res.render('register');
 });
 
+router.get('/recipe', (req,res) => {
+  res.render('recipe');
+});
+
 router.get('/', (req, res) => {
   res.render('home');
 });
@@ -36,6 +40,7 @@ router.post('/login', (req, res) => {
     })
     .catch(err => {
       logger.error(err);
+
       res.errorJson({err: err});
     });
 });
