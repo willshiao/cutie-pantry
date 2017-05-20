@@ -1,0 +1,17 @@
+{
+  "name": "cutie-pantry-site",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "William Shiao <willshiao@gmail.com>",
+  "license": "GPL-3.0",
+  "dependencies": {
+    "config": "^1.26.1",
+    "express": "^4.15.3",
+    "winston": "^2.3.1"
+  }
+}
