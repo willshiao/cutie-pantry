@@ -60,3 +60,6 @@ typings/
 # Sublime Text project files
 *.sublime-project
 *.sublime-workspace
+
+site/config/*
+!site/config/default.js

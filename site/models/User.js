@@ -6,9 +6,18 @@ const bcrypt = require('bcrypt');
 const Schema = mongoose.Schema;
 const SALT_WORK_FACTOR = 10;
 
+const ItemSchema = new Schema({
+  name: String,
+  barcode: String,
+  location: String,
+  quantity: Number,
+  expiryDate: Date,
+});
+
 const UserSchema = new Schema({
   username: { type: String, required: true, index: { unique: true } },
-  password: { type: String, required: true }
+  password: { type: String, required: true },
+  pantry: [ItemSchema],
 });
 
 UserSchema.pre('save', function(next) {
@@ -26,6 +35,13 @@ UserSchema.pre('save', function(next) {
     });
   });
 });
+
+UserSchema.statics.checkPasswords = (pass1, storedPass, cb) => {
+  bcrypt.compare(pass1, storedPass, (err, isMatch) => {
+    if (err) return cb(err);
+    cb(null, isMatch);
+  });
+};
 
 UserSchema.methods.comparePassword = function(candidatePassword, cb) {
   bcrypt.compare(candidatePassword, this.password, (err, isMatch) => {

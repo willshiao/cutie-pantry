@@ -2,7 +2,7 @@
 
 const express = require('express');
 const config = require('config');
-const cookieParser = require('cookie-parser');
+const session = require('express-session');
 
 const logger = require('./lib/logger');
 
@@ -12,7 +12,12 @@ const app = express();
 const indexRoute = require('./routes/index');
 const pagesRoute = require('./routes/pages');
 
-app.use(cookieParser());
+app.use(session({
+  secret: 'onqtwodifj12934120',  // For testing only
+  resave: false,
+  saveUninitialized: true,
+  cookie: { }
+}));
 app.use('/', indexRoute);
 app.use('/page', pagesRoute);
 
