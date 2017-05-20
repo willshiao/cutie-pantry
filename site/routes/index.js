@@ -7,17 +7,10 @@ const logger = require('../lib/logger');
 
 router.use(bodyParser.urlencoded({extended: false}));
 
-router.get('/login', (req, res) => {
-  res.render('login');
-});
-
-router.get('/register', (req, res) => {
-  res.render('register');
-});
-
-router.get('/', (req, res) => {
-  res.render('home');
-});
+router.get('/', (req, res) => res.render('home'));
+router.get('/login', (req, res) => res.render('login'));
+router.get('/register', (req, res) => res.render('register'));
+router.get('/addItem', (req, res) => res.render('addItem'));
 
 router.post('/login', (req, res) => {
   if(!req.body) return res.failMsg('Invalid information');
