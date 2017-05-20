@@ -1,6 +1,38 @@
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">
+            Register
+        </h1>
+        <ol class="breadcrumb">
+            <li>
+                <i class="fa fa-dashboard"></i>  <a href="/">Return to Home</a>
+            </li>
+            <li class="active">
+                <i class="fa fa-edit"></i> Login
+            </li>
+        </ol>
+    </div>
+</div>
+
+
 <form action="/register" method="POST">
-  <input type="text" name="username">
-  <input type="password" name="password">
-  <input type="password" name="confirm-password">
-  <button type="submit">Submit</button>
+    <div class="form-group">
+        <label>Username</label>
+        <input class="form-control" type="text" name="username">
+    </div>
+    <div class="form-group">
+        <label>Password</label>
+        <input class="form-control" type="text" name="password">
+    </div>
+    <div class="form-group">
+        <label>Confirm Password</label>
+        <input class="form-control" type="text" name="confirm-password">
+    </div>
+    <div class="form-group">
+        <button class="btn btn-default" type="submit">Submit</button>
+    </div>
 </form>
+
+<div class="form-group">
+    <a href="/login">Already a User?</a>
+</div>
