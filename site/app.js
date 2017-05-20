@@ -3,6 +3,7 @@
 const express = require('express');
 const config = require('config');
 const session = require('express-session');
+const exphbs = require('express-handlebars');
 
 const logger = require('./lib/logger');
 
@@ -11,6 +12,9 @@ const app = express();
 
 const indexRoute = require('./routes/index');
 const pagesRoute = require('./routes/pages');
+
+app.engine('handlebars', exphbs({defaultLayout: 'main'}));
+app.set('view engine', 'handlebars');
 
 app.use(session({
   secret: 'onqtwodifj12934120',  // For testing only

@@ -7,6 +7,18 @@ const logger = require('../lib/logger');
 
 router.use(bodyParser.urlencoded({extended: false}));
 
+router.get('/login', (req, res) => {
+  res.render('login');
+});
+
+router.get('/register', (req, res) => {
+  res.render('register');
+});
+
+router.get('/', (req, res) => {
+  res.render('home');
+});
+
 router.post('/login', (req, res) => {
   if(!req.body) return res.failMsg('Invalid information');
   if(!req.body.username || !req.body.password) return res.failMsg('Username and password required.');
