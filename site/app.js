@@ -11,6 +11,7 @@ require('./lib/extend').extendResponse(express.response);
 const app = express();
 
 const indexRoute = require('./routes/index');
+const apiRoute = require('./routes/api');
 
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
@@ -22,6 +23,7 @@ app.use(session({
   cookie: { }
 }));
 app.use('/', indexRoute);
+app.use('/api', apiRoute);
 
 app.use(express.static('static'));
 

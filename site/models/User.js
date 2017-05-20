@@ -6,18 +6,9 @@ const bcrypt = require('bcrypt');
 const Schema = mongoose.Schema;
 const SALT_WORK_FACTOR = 10;
 
-const ItemSchema = new Schema({
-  name: String,
-  barcode: String,
-  location: String,
-  quantity: Number,
-  expiryDate: Date,
-});
-
 const UserSchema = new Schema({
   username: { type: String, required: true, index: { unique: true } },
   password: { type: String, required: true },
-  pantry: [ItemSchema],
 });
 
 UserSchema.pre('save', function(next) {
