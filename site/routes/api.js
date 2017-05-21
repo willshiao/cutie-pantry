@@ -4,7 +4,7 @@ const router = require('express').Router();
 const bodyParser = require('body-parser');
 const Item = require('../models/Item');
 
-router.use(bodyParser.urlencoded());
+router.use(bodyParser.urlencoded({extended: false}));
 router.use(isAuthenticated);
 
 router.post('/items', (req, res) => {
@@ -12,9 +12,9 @@ router.post('/items', (req, res) => {
   new Item({
     username: req.session.user.username,
     name: body.name,
-    location: body.location,
+    // location: body.location,
     quantity: body.quantity,
-    expiryDate: body.expiryDate,
+    expiryDate: new Date(Date.parse(body.expiryDate)),
   }).save()
     .then(() => {
       res.successJson();
