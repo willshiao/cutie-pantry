@@ -21,7 +21,7 @@ router.get('/register', (req, res) => {
 });
 router.get('/recipe', (req, res) => {
   if(!req.session.user) return res.redirect('/login');
-  res.render('recipe', {user: req.session.user});
+  res.render('recipe', {user: req.session.user, recipe: true});
 });
 router.get('/addItem', (req, res) => res.render('addItem', {user: req.session.user}));
 router.get('/pantry', (req, res) => {
@@ -41,7 +41,8 @@ router.post('/login', (req, res) => {
         if(err) return res.errorJson({error: err});
         if(!valid) return res.failMsg('Invalid password');
         req.session.user = user;
-        res.successJson();
+        res.redirect('/');
+        // res.successJson();
       });
     })
     .catch(err => {
@@ -68,7 +69,8 @@ router.post('/register', (req, res) => {
       logger.info('New user: ', userInfo);
 
       req.session.user = userInfo;
-      res.successJson();
+      res.redirect('/');
+      // res.successJson();
     });
 });
 
