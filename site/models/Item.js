@@ -4,7 +4,7 @@ const mongoose = require('../lib/db');
 const Schema = mongoose.Schema;
 
 const ItemSchema = new Schema({
-  user: String,
+  username: String,
   name: String,
   location: String,
   quantity: String,
