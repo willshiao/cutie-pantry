@@ -19,9 +19,15 @@ router.get('/register', (req, res) => {
   if(req.session.user) return res.redirect('/');
   res.render('register', {user: req.session.user});
 });
-router.get('/recipe', (req, res) => res.render('recipe', {user: req.session.user}));
-router.get('/addItem', (req, res) => res.render('addItem', {user: req.session.user, addItem: true}));
-router.get('/pantry', (req, res) => res.render('pantry'));
+router.get('/recipe', (req, res) => {
+  if(!req.session.user) return res.redirect('/login');
+  res.render('recipe', {user: req.session.user});
+});
+router.get('/addItem', (req, res) => res.render('addItem', {user: req.session.user}));
+router.get('/pantry', (req, res) => {
+  if(!req.session.user) return res.redirect('/login');
+  res.render('pantry', {user: req.session.user});
+});
 
 router.post('/login', (req, res) => {
   if(!req.body) return res.failMsg('Invalid information');
