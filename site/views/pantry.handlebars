@@ -1,0 +1,49 @@
+<form action="api/items" method="POST">
+    <div class="form-group">
+                                <label>Item</label>
+                                <input class="form-control" placeholder = "Item name here">
+                                <p class="help-block"></p>
+                            </div>
+
+                             <div class="form-group">
+                                <label>Item Expiration Date</label>
+                                <input class="form-control" placeholder = "MM/DD/YYYY">
+                                <p class="help-block"></p>
+                            </div>
+                            <form>
+                            <button type="submit" class="btn btn-default">Submit Button</button>
+                            <button type="reset" class="btn btn-default">Reset Button</button>
+        </form>
+
+<script>
+var looper;
+var degrees = 0;
+function rotateAnimation(el,speed){
+    var elem = document.getElementById(el);
+    if(navigator.userAgent.match("Chrome")){
+        elem.style.WebkitTransform = "rotate("+degrees+"deg)";
+    } else if(navigator.userAgent.match("Firefox")){
+        elem.style.MozTransform = "rotate("+degrees+"deg)";
+    } else if(navigator.userAgent.match("MSIE")){
+        elem.style.msTransform = "rotate("+degrees+"deg)";
+    } else if(navigator.userAgent.match("Opera")){
+        elem.style.OTransform = "rotate("+degrees+"deg)";
+    } else {
+        elem.style.transform = "rotate("+degrees+"deg)";
+    }
+    looper = setTimeout('rotateAnimation(\''+el+'\','+speed+')',speed);
+    degrees++;
+    while(degrees > 359){
+        degrees = 1;
+    }
+    
+    //document.getElementById("status").innerHTML = "rotate("+degrees+"deg)";
+}
+</script>
+
+<body>
+<div style="text-align: right;"/div>
+<img id="img1" src="gordon.gif" alt="gordon">
+<script>rotateAnimation("img1",5);</script>
+<h2 style="width:800px;" id="status"></h2>
+</body>  
