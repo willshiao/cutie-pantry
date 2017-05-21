@@ -1,6 +1,6 @@
 $.ajax({
   method: 'GET',
-  url: 'http://localhost:3000/api/recipe',
+  url: '/api/recipe',
   dataType: 'json',
   success: function(data) {
     console.log(data.data);
