@@ -10,7 +10,7 @@ router.use(bodyParser.urlencoded({extended: false}));
 router.get('/', (req, res) => res.render('home'));
 router.get('/login', (req, res) => res.render('login'));
 router.get('/register', (req, res) => res.render('register'));
-router.get('recipe', (req, res) => res.render('recipe'));
+router.get('/recipe', (req, res) => res.render('recipe'));
 router.get('/addItem', (req, res) => res.render('addItem'));
 
 router.post('/login', (req, res) => {
