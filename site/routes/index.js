@@ -20,7 +20,7 @@ router.get('/register', (req, res) => {
   res.render('register', {user: req.session.user});
 });
 router.get('/recipe', (req, res) => res.render('recipe', {user: req.session.user}));
-router.get('/addItem', (req, res) => res.render('addItem', {user: req.session.user}));
+router.get('/addItem', (req, res) => res.render('addItem', {user: req.session.user, addItem: true}));
 router.get('/pantry', (req, res) => res.render('pantry'));
 
 router.post('/login', (req, res) => {
