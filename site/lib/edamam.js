@@ -2,22 +2,26 @@
 
 const config = require('config');
 const request = require('request-promise');
+const logger = require('./logger');
 
 class Edamam {
-    static search(query, options) {
-        const form = {
-            app_id: config.get('appId'),
-            app_key: config.get('apiKey'),
-            q: encodeURIComponent(query),
-        };
-        for(const key in options) {
-            form[key] = options[key];
-        }
-        return request({
-            uri: 'https://api.edamam.com/search',
-            form: form,
-        });
+  static search(query, options = {}) {
+    const qs = {
+      app_id: config.get('appId'),
+      app_key: config.get('apiKey'),
+      q: query,
+    };
+    for(const key in options) {
+      qs[key] = options[key];
     }
+    logger.debug('Making API call with: ', qs);
+    return request({
+      method: 'GET',
+      proxy: 'http://localhost:8888',
+      uri: 'http://api.edamam.com/search',
+      qs: qs,
+    });
+  }
 }
 
 module.exports = Edamam;
