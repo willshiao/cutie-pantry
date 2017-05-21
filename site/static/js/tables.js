@@ -1,9 +1,12 @@
 // $(document).ready(function(){
 $.get('/api/items', (data) => {
-  // ajax: '/api/items',
-  console.log(data);
+  const niceData = data.data.map(item => {
+    item.expiryDate = new Date(item.expiryDate).toLocaleDateString('en-US');
+    return item;
+  });
+  console.log(niceData);
   $('#infotable').DataTable({
-    data: data.data,
+    data: niceData,
     columns: [{data: 'name'}, {data: 'quantity'}, {data: 'expiryDate'}]
   });
 });
