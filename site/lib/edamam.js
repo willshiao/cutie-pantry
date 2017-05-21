@@ -17,7 +17,6 @@ class Edamam {
     logger.debug('Making API call with: ', qs);
     return request({
       method: 'GET',
-      proxy: 'http://localhost:8888',
       uri: 'http://api.edamam.com/search',
       qs: qs,
       json: true,
