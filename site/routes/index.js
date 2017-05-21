@@ -7,11 +7,20 @@ const logger = require('../lib/logger');
 
 router.use(bodyParser.urlencoded({extended: false}));
 
-router.get('/', (req, res) => res.render('home'));
-router.get('/login', (req, res) => res.render('login'));
-router.get('/register', (req, res) => res.render('register'));
-router.get('/recipe', (req, res) => res.render('recipe'));
-router.get('/addItem', (req, res) => res.render('addItem'));
+router.get('/', (req, res) => {
+  if(!req.session.user) return res.redirect('/login');
+  res.render('home', {user: req.session.user, hasTable: true});
+});
+router.get('/login', (req, res) => {
+  if(req.session.user) return res.redirect('/');
+  res.render('login', {user: req.session.user});
+});
+router.get('/register', (req, res) => {
+  if(req.session.user) return res.redirect('/');
+  res.render('register', {user: req.session.user});
+});
+router.get('/recipe', (req, res) => res.render('recipe', {user: req.session.user}));
+router.get('/addItem', (req, res) => res.render('addItem', {user: req.session.user}));
 router.get('/pantry', (req, res) => res.render('pantry'));
 
 router.post('/login', (req, res) => {

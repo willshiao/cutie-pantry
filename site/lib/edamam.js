@@ -20,6 +20,7 @@ class Edamam {
       proxy: 'http://localhost:8888',
       uri: 'http://api.edamam.com/search',
       qs: qs,
+      json: true,
     });
   }
 }
